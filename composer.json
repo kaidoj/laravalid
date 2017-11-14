@@ -21,5 +21,15 @@
             "Bllim\\Laravalid\\": "src/"
         }
     },
+    "extra":{
+        "laravel":{
+            "providers":[
+                "Bllim\\Laravalid\\LaravalidServiceProvider"
+            ],
+            "aliases":{
+                "Form": "Bllim\\Laravalid\\Facade"
+            }
+        }
+    },
     "minimum-stability": "stable"
 }
