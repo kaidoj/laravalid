@@ -123,10 +123,12 @@ class FormBuilder extends \Collective\Html\FormBuilder {
 	/**
 	 * @see Illuminate\Html\FormBuilder
 	 */
-	public function select($name, $list = [], $selected = null, $options = [])
+	public function select($name, $list = [], $selected = null, array $selectAttributes = [], array $optionsAttributes = [])
 	{
-		$options = $this->converter->convert(Helper::getFormAttribute($name)) + $options;
-		return parent::select($name, $list, $selected, $options);
+		$optionsAttributes = $this->converter->convert(Helper::getFormAttribute($name)) + $optionsAttributes;
++        	$selectAttributes  = $this->converter->convert(Helper::getFormAttribute($name)) + $selectAttributes;
+		
+		return parent::select($name, $list, $selected, $selectAttributes, $optionsAttributes);
 	}
 
 	protected function checkable($type, $name, $value, $checked, $options)
@@ -145,6 +147,4 @@ class FormBuilder extends \Collective\Html\FormBuilder {
 		$this->resetValidation();
 		return parent::close();
 	}
-
-
 }
