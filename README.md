@@ -33,7 +33,7 @@ Require `bllim/laravel-validation-for-client-side` in composer.json and run `com
 
     {
         "require": {
-            "laravel/framework": "5.1.*",
+            "laravel/framework": "5.5.*",
             ...
             "bllim/laravalid": "*"
         }
