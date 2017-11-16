@@ -231,10 +231,14 @@ abstract class Converter {
 	protected function parseValidationRule($rule)
 	{
 		$ruleArray = ['name' => '', 'parameters' => []];
-
-		$explodedRule = explode(':', $rule);
-		$ruleArray['name'] = array_shift($explodedRule);
-		$ruleArray['parameters'] = explode(',', array_shift($explodedRule));
+		if(is_object($rule)) {
+			$class = explode('\\', get_class($rule));
+			$ruleArray['name'] = end($class);
+		} else {
+			$explodedRule = explode(':', $rule);
+			$ruleArray['name'] = array_shift($explodedRule);
+			$ruleArray['parameters'] = explode(',', array_shift($explodedRule));
+		}
 
 		return $ruleArray;
 	}
